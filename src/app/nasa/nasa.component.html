@@ -1,0 +1,19 @@
+<button (click)="onSubmit()">Next</button>
+
+<div *ngIf="apod">
+  <h1>{{ apod.title }}</h1>
+  <img *ngIf="apod.media_type=='image'" src="{{ apod.url }}"
+  alt="{{ apod.title }}">
+
+  <div *ngIf="apod.media_type=='video'">
+    <iframe [src]='apod.url | safe' allowfullscreen frameborder="0"></iframe>
+  </div>
+
+  <div>
+      <span *ngIf="apod.copyright">{{ apod.copyright}}</span>
+      <span *ngIf="apod.date">{{ apod.date | date:medium}}</span>
+  </div>
+
+
+  <div>{{ apod.explanation }}</div>
+</div>
